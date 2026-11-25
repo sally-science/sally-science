@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sally 선생님 · IB·AP·A-level Science & Maths</title>
+<meta name="description" content="IB·AP·A-level 과학·수학을 영어로 이해시키는 샐리 선생님. 10년 이상 강의, 500명 이상의 국제학교 학생.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1F2A37; --muted:#6B7280; --teal:#0E7C7B; --teal-tint:#E6F4F2;
+    --hl:#FFE066; --coral:#E4572E; --paper:#FFF6D6; --line:#E5E7EB;
+    --hand: "Caveat", "Gaegu", cursive;
+    --max: 1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:72px}
+  body{margin:0; font-family:"Pretendard","Segoe UI",system-ui,sans-serif; color:var(--ink); background:#fff; line-height:1.65; font-size:16px; -webkit-font-smoothing:antialiased}
+  html[lang="ko"] .en, html[lang="en"] .ko{display:none !important}
+  html[lang="ko"] body{word-break:keep-all}
+  a{color:inherit}
+  img{max-width:100%; display:block}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+
+  /* draft banner */
+  .draft{background:var(--paper); font-size:13px; color:var(--muted); text-align:center; padding:6px 12px}
+
+  /* header */
+  header{position:sticky; top:0; z-index:10; background:rgba(255,255,255,.96); border-bottom:1px solid var(--line)}
+  .bar{display:flex; align-items:center; gap:16px; height:60px}
+  .brand{font-weight:700; text-decoration:none; font-size:17px; margin-right:auto; white-space:nowrap}
+  @media (max-width:420px){ .brand small{display:none} }
+  .brand small{font-family:var(--hand); color:var(--teal); font-size:20px; font-weight:500; margin-left:6px}
+  nav.links{display:none; gap:22px; font-size:15px}
+  nav.links a{text-decoration:none; color:var(--muted)}
+  nav.links a:hover{color:var(--ink)}
+  .lang{display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; font-size:13px}
+  .lang button{border:0; background:none; padding:5px 11px; cursor:pointer; color:var(--muted); font:inherit}
+  .lang button[aria-pressed="true"]{background:var(--ink); color:#fff}
+  .btn{display:inline-block; background:var(--teal); color:#fff; text-decoration:none; border:0; border-radius:8px; padding:11px 18px; font:inherit; font-weight:600; cursor:pointer}
+  .btn:hover{background:#0a6665}
+  .btn.ghost{background:none; color:var(--teal); border:1.5px solid var(--teal)}
+  .btn.sm{padding:7px 13px; font-size:14px}
+  .bar .btn.sm{display:none}
+
+  /* section basics */
+  section{padding:64px 0}
+  .label{font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--teal); margin:0 0 8px}
+  h2{font-size:clamp(24px,4.4vw,34px); line-height:1.3; margin:0 0 28px; font-weight:700; letter-spacing:-.01em}
+  .mark{background:linear-gradient(transparent 52%, var(--hl) 52%, var(--hl) 92%, transparent 92%); padding:0 2px}
+  .tbd{display:inline-block; font-size:12px; font-weight:600; color:var(--coral); border:1px dashed var(--coral); border-radius:4px; padding:0 6px; margin-left:6px; vertical-align:middle; line-height:1.6}
+
+  /* hero */
+  .hero{padding:44px 0 56px}
+  .hero-grid{display:grid; gap:36px}
+  .hero h1{font-size:clamp(34px,7vw,58px); line-height:1.15; margin:0 0 18px; letter-spacing:-.02em}
+  .hero .sub{font-size:clamp(17px,2.4vw,20px); margin:0 0 26px; max-width:30em}
+  .stats{display:flex; gap:28px; margin:0 0 30px; flex-wrap:wrap}
+  .stats div{display:flex; flex-direction:column}
+  .stats b{font-size:34px; line-height:1.1; color:var(--teal)}
+  .stats span{font-size:14px; color:var(--muted)}
+  .cta{display:flex; gap:10px; flex-wrap:wrap}
+  .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:30px; padding:0; list-style:none}
+  .tags li{font-size:13px; border:1px solid var(--line); border-radius:999px; padding:3px 11px; color:var(--muted)}
+  .photo-box{position:relative; max-width:420px; margin:0 auto 24px}
+  .photo-box img{border-radius:10px; aspect-ratio:4/5; object-fit:cover; object-position:50% 18%; width:100%}
+  .sticky{position:absolute; left:-14px; bottom:-26px; width:210px; background:var(--paper); padding:14px 16px; transform:rotate(-3deg); font-family:var(--hand); font-size:24px; line-height:1.2; box-shadow:0 2px 6px rgba(0,0,0,.08)}
+  .sticky small{display:block; font-size:17px; color:var(--muted); margin-top:4px}
+  .arrow{position:absolute; left:150px; bottom:52px; width:90px; height:70px; color:var(--ink); opacity:.75}
+
+  /* philosophy */
+  .why{background:var(--teal-tint)}
+  .why ol{list-style:none; margin:0; padding:0; display:grid; gap:22px}
+  .why li{display:grid; grid-template-columns:44px 1fr; gap:8px; align-items:start}
+  .why .n{font-family:var(--hand); font-size:34px; line-height:1; color:var(--teal); font-weight:700}
+  .why h3{margin:0 0 2px; font-size:18px}
+  .why p{margin:0; color:#374151}
+
+  /* about */
+  .about-grid{display:grid; gap:36px}
+  .facts{list-style:none; margin:0; padding:0}
+  .facts li{padding:14px 0; border-top:1px solid var(--line)}
+  .facts li:last-child{border-bottom:1px solid var(--line)}
+  .facts .k{display:block; font-size:13px; color:var(--muted); margin-bottom:2px}
+  .facts b{font-weight:600}
+  .research{background:var(--paper); padding:18px 20px; border-radius:6px; transform:rotate(.6deg); align-self:start}
+  .research .hand{font-family:var(--hand); font-size:24px; color:var(--teal); margin:0 0 6px}
+  .research p{margin:0 0 8px}
+  .research p:last-child{margin:0}
+  .subjects{margin-top:22px; font-size:15px; color:#374151}
+  .subjects p{margin:0 0 8px}
+  .subjects b{color:var(--teal)}
+  .pubs{margin:6px 0 0; padding-left:20px; font-size:14px; color:#374151; line-height:1.55}
+  .facts .pubs li, .facts .pubs li:last-child{border:0; padding:0 0 0 2px; margin-bottom:10px}
+  .pubs a{color:var(--teal); word-break:break-all}
+  .pubs u{text-decoration-color:var(--hl); text-decoration-thickness:3px; text-underline-offset:2px}
+  .diss{margin:6px 0 0; font-size:14px; line-height:1.5}
+  .diss u{text-decoration-color:var(--hl); text-decoration-thickness:3px; text-underline-offset:2px}
+  .facts .muted{color:var(--muted); font-size:13px}
+
+  /* curriculum */
+  .tabs{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px}
+  .tabs button{font:inherit; font-size:15px; border:1.5px solid var(--line); background:#fff; border-radius:8px; padding:8px 14px; cursor:pointer; color:var(--ink)}
+  .tabs button[aria-selected="true"]{border-color:var(--teal); background:var(--teal); color:#fff}
+  .panel{display:none}
+  .panel.on{display:block}
+  .course{display:grid; grid-template-columns:1fr auto; gap:6px 16px; align-items:center; padding:16px 0; border-top:1px solid var(--line)}
+  .course:last-of-type{border-bottom:1px solid var(--line)}
+  .course h3{margin:0; font-size:18px}
+  .course p{margin:0; grid-column:1; color:var(--muted); font-size:14px}
+  .course a{grid-row:1 / span 2; grid-column:2; font-size:14px; font-weight:600; color:var(--teal); text-decoration:none; white-space:nowrap}
+  .course a:hover{text-decoration:underline}
+  .panel-note{margin-top:16px; font-size:14px; color:var(--muted)}
+
+  /* sample slide */
+  .sample-grid{display:grid; gap:28px; align-items:center}
+  .slide{aspect-ratio:16/9; border:1px solid var(--line); border-radius:8px; padding:5% 6%; position:relative; background:#fff; container-type:inline-size; box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .slide .sl{font-size:2.2cqw; letter-spacing:.14em; color:var(--teal); font-weight:700}
+  .slide .st{font-size:4.6cqw; font-weight:700; margin:.6cqw 0 3cqw; line-height:1.2}
+  .slide .row{display:grid; grid-template-columns:1fr 1fr; gap:4cqw; font-size:2.7cqw}
+  .slide .card{background:var(--teal-tint); border-radius:1cqw; padding:3cqw; text-align:center}
+  .slide .big{font-size:5cqw; font-weight:700; color:var(--teal); line-height:1.2}
+  .slide .snote{position:absolute; right:5%; bottom:7%; background:var(--paper); font-family:var(--hand); font-size:2.9cqw; padding:1.4cqw 2cqw; transform:rotate(2.5deg); max-width:40%; line-height:1.2}
+  .slide .tag{position:absolute; left:6%; bottom:6%; font-size:1.8cqw; color:var(--muted)}
+
+  /* placeholder boxes */
+  .empty{border:1.5px dashed #CBD5E1; border-radius:8px; padding:22px; color:var(--muted)}
+  .empty p{margin:0 0 6px}
+  .empty p:last-child{margin:0}
+
+  /* contact */
+  .contact{background:var(--teal-tint)}
+  .contact-grid{display:grid; gap:30px}
+  form{background:#fff; border-radius:10px; padding:24px; display:grid; gap:16px}
+  label{display:block; font-size:14px; font-weight:600; margin-bottom:5px}
+  label .req{color:var(--coral)}
+  input,select,textarea{width:100%; font:inherit; font-size:16px; border:1.5px solid var(--line); border-radius:8px; padding:10px 12px; color:var(--ink); background:#fff}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--teal); outline-offset:1px; border-color:var(--teal)}
+  textarea{min-height:96px; resize:vertical}
+  .two{display:grid; gap:16px}
+  .consent{display:flex; gap:10px; align-items:flex-start; font-size:14px; color:#374151}
+  .consent input{width:auto; margin-top:4px}
+  .err{color:var(--coral); font-size:13px; margin-top:4px; display:none}
+  .field.bad .err{display:block}
+  .field.bad input,.field.bad select{border-color:var(--coral)}
+  .hp{position:absolute; left:-9999px}
+  .thanks{display:none; background:#fff; border-radius:10px; padding:32px 24px}
+  .thanks .hand{font-family:var(--hand); font-size:34px; color:var(--teal); margin:0 0 8px}
+  .side p{margin:0 0 12px}
+
+  footer{padding:28px 0 40px; font-size:13px; color:var(--muted)}
+
+  @media (min-width:760px){
+    .wrap{padding:0 32px}
+    nav.links{display:flex}
+    .bar .btn.sm{display:inline-block}
+    section{padding:88px 0}
+    .hero{padding:64px 0 88px}
+    .hero-grid{grid-template-columns:1.15fr .85fr; align-items:center}
+    .photo-box{margin:0}
+    .why ol{grid-template-columns:1fr 1fr; gap:30px 48px}
+    .why li:last-child{grid-column:1 / -1; max-width:50%}
+    .about-grid{grid-template-columns:1.3fr .9fr; gap:56px}
+    .sample-grid{grid-template-columns:1.4fr 1fr; gap:48px}
+    .contact-grid{grid-template-columns:.8fr 1.2fr; gap:56px}
+    .two{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top">Sally<small>Science &amp; Maths</small></a>
+    <nav class="links" aria-label="Sections">
+      <a href="#about"><span class="ko">소개</span><span class="en">About</span></a>
+      <a href="#curriculum"><span class="ko">커리큘럼</span><span class="en">Curriculum</span></a>
+      <a href="#samples"><span class="ko">샘플 자료</span><span class="en">Samples</span></a>
+      <a href="#notice"><span class="ko">특강</span><span class="en">Classes</span></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="ko" aria-pressed="true">한국어</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn sm" href="#contact"><span class="ko">문의하기</span><span class="en">Contact</span></a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>
+          <span class="ko">외우기 전에,<br><span class="mark">왜</span> 그런지부터.</span>
+          <span class="en">Understand <span class="mark">why</span> —<br>before you memorise.</span>
+        </h1>
+        <p class="sub">
+          <span class="ko">IB·AP·A-level 과학·수학을 영어로 이해시키는 샐리 선생님</span>
+          <span class="en">IB, AP &amp; A-level Science and Maths — explained in English by Sally</span>
+        </p>
+        <div class="stats">
+          <div><b>10+</b><span class="ko">년 강의</span><span class="en">years teaching</span></div>
+          <div><b>500+</b><span class="ko">명의 국제학교 학생</span><span class="en">international-school students</span></div>
+        </div>
+        <div class="cta">
+          <a class="btn" href="#contact"><span class="ko">수업 문의하기</span><span class="en">Ask about lessons</span></a>
+          <a class="btn ghost" href="#curriculum"><span class="ko">커리큘럼 보기</span><span class="en">See curriculum</span></a>
+        </div>
+        <ul class="tags" aria-label="Curricula">
+          <li>IB DP</li><li>IB MYP</li><li>AP</li><li>A-level</li><li>IGCSE</li><li>Key Stage 3</li><li>US General</li><li>US Honors</li><li>Ontario (OSSD)</li><li>SSAT</li><li>SCAT</li><li>MAP</li>
+        </ul>
+      </div>
+      <div class="photo-box">
+        <img src="img/profile-photo.jpg" alt="Sally 선생님 프로필 사진">
+        <svg class="arrow" viewBox="0 0 90 70" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 62 C 30 58, 52 40, 70 12"/><path d="M60 14 L71 10 L72 22"/>
+        </svg>
+        <div class="sticky">Ask me <u>why</u> —<br>that's my favourite question!<small class="ko">“왜요?”가 제일 반가운 질문이에요</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="why" id="how">
+    <div class="wrap">
+      <p class="label"><span class="ko">수업 방식</span><span class="en">How I teach</span></p>
+      <h2><span class="ko">외운 것은 잊혀도, 이해한 것은 남아요</span><span class="en">What you memorise fades. What you understand stays.</span></h2>
+      <ol>
+        <li><span class="n">1</span><div>
+          <h3><span class="ko">이해가 먼저</span><span class="en">Understanding first</span></h3>
+          <p><span class="ko">외우게 하지 않고 “왜 그런지”부터 이해시켜요.</span><span class="en">We start with <i>why</i>, not with memorising.</span></p></div></li>
+        <li><span class="n">2</span><div>
+          <h3><span class="ko">교육과정 맞춤</span><span class="en">Curriculum-smart</span></h3>
+          <p><span class="ko">IB·AP·A-level은 시험이 묻는 방식이 달라요. 그 방식에 맞춰 가르쳐요.</span><span class="en">IB, AP and A-level each ask questions differently. I teach to the way your exam asks.</span></p></div></li>
+        <li><span class="n">3</span><div>
+          <h3><span class="ko">영어 과학 용어에 자신감</span><span class="en">Confident with science English</span></h3>
+          <p><span class="ko">영어가 약한 학생도 과학 용어를 영어로 편하게 쓰게 만들어요.</span><span class="en">Students who find English hard learn to use scientific terms with ease.</span></p></div></li>
+        <li><span class="n">4</span><div>
+          <h3><span class="ko">학생 맞춤 설명</span><span class="en">Explained your way</span></h3>
+          <p><span class="ko">학생의 관심사와 비유·연상법으로 설명해서 과학이 재미있어지게 해요.</span><span class="en">I connect ideas to each student's interests, using analogies and memory hooks that make science fun.</span></p></div></li>
+        <li><span class="n">5</span><div>
+          <h3><span class="ko">친구 같은 선생님</span><span class="en">A mentor you can talk to</span></h3>
+          <p><span class="ko">편하게 고민을 털어놓을 수 있게 들어 주고, 진로도 함께 찾아가요.</span><span class="en">I listen, help with worries, and explore future paths together.</span></p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <p class="label"><span class="ko">강사 소개</span><span class="en">About Sally</span></p>
+      <h2><span class="ko">화학 연구실에서 교실로 왔어요</span><span class="en">From a chemistry lab to your classroom</span></h2>
+      <div class="about-grid">
+        <div>
+          <ul class="facts">
+            <li><span class="k"><span class="ko">학력</span><span class="en">Education</span></span>
+              <b>University of Auckland — BSc, Medicinal Chemistry</b><span class="ko"> · 의약화학 학사</span><br>
+              <b>BSc (Honours), <span class="mark">First Class Honours</span></b><span class="ko"> · 준석사 최우등 졸업</span><br>
+              <b>PhD in Chemistry — 2 years of research</b><span class="ko"> · 화학과 박사과정 2년 연구</span></li>
+            <li><span class="k"><span class="ko">석사 논문 · Honours dissertation</span><span class="en">Honours dissertation</span></span>
+              <p class="diss"><b><u>Synthesis and Molecular Modelling of Cyclohepta[<i>b</i>]thieno[3,2-<i>e</i>]pyridine-2-carboxamides as Phospholipase C inhibitors for the treatment of cancer</u></b><br>
+              <span class="muted">BSc (Honours) in Medicinal Chemistry, The University of Auckland, 2014</span><span class="ko muted"> · 항암 표적 효소(PLC) 억제제 합성과 분자 모델링</span></p></li>
+            <li><span class="k"><span class="ko">논문 (공동저자) · Publications</span><span class="en">Publications (co-author)</span></span>
+              <ol class="pubs">
+                <li>Arabshahi, H. J., van Rensburg, M., Pilkington, L. I., <b>Jeon, C. Y.</b>, Song, M., Gridel, L.-M., Leung, E., Barker, D., Vuica-Ross, M., Volcho, K. P., Zakharenko, A. L., Lavrik, O. I., &amp; Reynisson, J. (2015). <b><u>A synthesis, <i>in silico</i>, <i>in vitro</i> and <i>in vivo</i> study of thieno[2,3-<i>b</i>]pyridine anticancer analogues.</u></b> <i>MedChemComm, 6</i>, 1987–1997. <a href="https://doi.org/10.1039/c5md00245a" target="_blank" rel="noopener">https://doi.org/10.1039/c5md00245a</a></li>
+                <li>Leung, E., Pilkington, L. I., van Rensburg, M., <b>Jeon, C. Y.</b>, Song, M., Arabshahi, H. J., De Zoysa, G. H., Sarojini, V., Denny, W. A., Reynisson, J., &amp; Barker, D. (2016). <b><u>Synthesis and cytotoxicity of thieno[2,3-<i>b</i>]quinoline-2-carboxamide and cycloalkyl[<i>b</i>]thieno[3,2-<i>e</i>]pyridine-2-carboxamide derivatives.</u></b> <i>Bioorganic &amp; Medicinal Chemistry, 24</i>, 1142–1154. <a href="https://doi.org/10.1016/j.bmc.2016.01.047" target="_blank" rel="noopener">https://doi.org/10.1016/j.bmc.2016.01.047</a></li>
+              </ol></li>
+            <li><span class="k"><span class="ko">대학 강의 · University teaching</span><span class="en">University teaching</span></span>
+              <b>Chemistry Laboratory Tutor — 1st Year &amp; 2nd Year Chemistry</b>, University of Auckland<span class="ko"><br><span class="muted">오클랜드 대학교 화학 실험 튜터 — 1학년·2학년 화학</span></span></li>
+            <li><span class="k"><span class="ko">연구 경력 · Research</span><span class="en">Research experience</span></span>
+              <b>Visiting researcher</b>, Department of Biochemistry &amp; Molecular Biology, Yonsei University College of Medicine<span class="ko"><br><span class="muted">연세대학교 의과대학 생화학-분자생물학교실 방문연구생</span></span><br>
+              <b>Research intern</b>, Department of Biomedical Sciences (Physiology), Seoul National University College of Medicine<span class="ko"><br><span class="muted">서울대학교 의과대학 의과학과 생리학교실 학생연구인턴</span></span></li>
+            <li><span class="k"><span class="ko">강의 경력 · Teaching</span><span class="en">Teaching experience</span></span>
+              <b>Teaching international-school students since 2016</b>, including full-time science classes at an international school<span class="ko"><br><span class="muted">2016년부터 국제학교 학생·유학생 과학·수학 강의 (국제학교 정규 과학 수업 포함)</span></span></li>
+          </ul>
+          <div class="subjects">
+            <p><b>Science</b> — Chemistry and Biology for AP, IB, A-Level, IGCSE, MYP and Key Stage<br>Middle School Science (Chemistry, Biology, Physics), General and Honors Chemistry &amp; Biology</p>
+            <p><b>Maths</b> — Elementary &amp; Middle School Maths, Pre-Algebra, Algebra 1, Algebra 2, Geometry</p>
+          </div>
+        </div>
+        <div class="research">
+          <p class="hand"><span class="ko">연구실에서 한 일</span><span class="en">In the lab</span></p>
+          <p><span class="ko">제가 직접 합성한 항암 후보물질로 암세포 실험을 했어요.</span><span class="en">I synthesised anticancer compounds and tested them on cancer cells.</span></p>
+          <p style="font-family:var(--hand);font-size:21px;margin-top:12px"><span class="ko">그래서 교과서 속 반응이 “진짜”로 보여요.</span><span class="en">So textbook reactions feel real to me.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRICULUM -->
+  <section id="curriculum" style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <p class="label"><span class="ko">커리큘럼</span><span class="en">Curriculum</span></p>
+      <h2><span class="ko">자녀 학교의 교육과정부터 골라 보세요</span><span class="en">Start with your child's curriculum</span></h2>
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-tab="ib">IB</button>
+        <button role="tab" aria-selected="false" data-tab="ap">AP &amp; SAT</button>
+        <button role="tab" aria-selected="false" data-tab="alevel">A-level &amp; IGCSE</button>
+        <button role="tab" aria-selected="false" data-tab="us">US &amp; Canada</button>
+        <button role="tab" aria-selected="false" data-tab="entry"><span class="ko">입학시험</span><span class="en">Entrance exams</span></button>
+      </div>
+
+      <div class="panel on" data-panel="ib">
+        <div class="course"><h3>IB DP Chemistry</h3><p>SL &amp; HL</p><a href="#contact" data-subject="IB DP Chemistry"><span class="ko">이 과목 문의 →</span><span class="en">Ask →</span></a></div>
+        <div class="course"><h3>IB DP Biology</h3><p>SL &amp; HL</p><a href="#contact" data-subject="IB DP Biology"><span class="ko">이 과목 문의 →</span><span class="en">Ask →</span></a></div>
+        <div class="course"><h3>IB MYP Science &amp; Maths</h3><p>Middle Years Programme</p><a href="#contact" data-subject="IB MYP Science / Maths"><span class="ko">이 과목 문의 →</span><span class="en">Ask →</span></a></div>
+      </div>
+      <div class="panel" data-panel="ap">
+        <div class="course"><h3>AP Chemistry</h3><p><span class="ko">AP 시험 대비</span><span class="en">AP exam prep</span></p><a href="#contact" data-subject="AP Chemistry"><span class="ko">이 과목 문의 →</span><span class="en">Ask →</span></a></div>
+        <div class="course"><h3>SAT Chemistry, PSAT &amp; SAT</h3><p><span class="ko">미국 입시 시험</span><span class="en">US admissions tests</span></p><a href="#contact" data-subject="SAT"><span class="ko">이 과목 문의 →</span><span class="en">Ask →</span></a></div>
+      </div>
+      <div class="panel" data-panel="alevel">
+        <div class="course"><h3>A-level Chemistry &amp; Biology</h3><p><span class="ko">영국 입시</span><span class="en">UK admissions</span></p><a href="#contact" data-subject="A-level Chemistry / Biology"><span class="ko">이 과목 문의 →</span><span class="en">Ask →</span></a></div>
+        <div class="course"><h3>IGCSE Chemistry &amp; Biology</h3><p>Cambridge / Edexcel</p><a href="#contact" data-subject="IGCSE Chemistry / Biology"><span class="ko">이 과목 문의 →</span><span class="en">Ask →</span></a></div>
+        <div class="course"><h3>Key Stage 3 Science &amp; Maths</h3><p>Year 7–9</p><a href="#contact" data-subject="KS3 Science / Maths"><span class="ko">이 과목 문의 →</span><span class="en">Ask →</span></a></div>
+      </div>
+      <div class="panel" data-panel="us">
+        <div class="course"><h3>General &amp; Honors Chemistry, Biology</h3><p>US High School</p><a href="#contact" data-subject="US Chemistry / Biology (General/Honors)"><span class="ko">이 과목 문의 →</span><span class="en">Ask →</span></a></div>
+        <div class="course"><h3>Pre-Algebra, Algebra 1, Algebra 2, Geometry</h3><p><span class="ko">초·중·고 수학 (Elementary &amp; Middle School Maths 포함)</span><span class="en">Elementary, Middle &amp; High School Maths</span></p><a href="#contact" data-subject="US Maths"><span class="ko">이 과목 문의 →</span><span class="en">Ask →</span></a></div>
+        <div class="course"><h3>Ontario (OSSD) Science, Biology, Chemistry</h3><p>Grade 10–12</p><a href="#contact" data-subject="Ontario Science"><span class="ko">이 과목 문의 →</span><span class="en">Ask →</span></a></div>
+      </div>
+      <div class="panel" data-panel="entry">
+        <div class="course"><h3>SSAT, SCAT, MAP &amp; CTY</h3><p><span class="ko">국제학교·사립학교 입학시험</span><span class="en">International &amp; private school entrance tests</span></p><a href="#contact" data-subject="Entrance exam"><span class="ko">이 과목 문의 →</span><span class="en">Ask →</span></a></div>
+        <div class="course"><h3><span class="ko">국제학교 입학시험·면접</span><span class="en">International school entry test &amp; interview</span></h3><p>Maths &amp; Science</p><a href="#contact" data-subject="International school entry"><span class="ko">이 과목 문의 →</span><span class="en">Ask →</span></a></div>
+      </div>
+      <p class="panel-note">
+        <span class="ko">대상 학년·수업 형태·수업료는 상담 때 안내해 드려요. 여기 없는 과정도 문의해 주세요.</span>
+        <span class="en">Year levels, lesson format and fees are shared during consultation. Don't see your curriculum? Just ask.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- SAMPLES -->
+  <section id="samples" style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <p class="label"><span class="ko">샘플 자료</span><span class="en">Sample materials</span></p>
+      <h2><span class="ko">실제 수업 자료를 미리 보세요</span><span class="en">See what a real lesson looks like</span></h2>
+      <div class="sample-grid">
+        <div class="slide" aria-label="Sample slide: The mole">
+          <div class="sl">IGCSE CHEMISTRY · THE MOLE</div>
+          <div class="st">1 mole is just a <span class="mark">counting number</span></div>
+          <div class="row">
+            <div class="card">1 dozen eggs<div class="big">12</div></div>
+            <div class="card">1 mole of particles<div class="big">6.02 × 10²³</div></div>
+          </div>
+          <div class="snote">Same idea as a dozen — just a much bigger number!</div>
+        </div>
+        <div>
+          <p><span class="ko">수업에서 실제로 쓰는 슬라이드예요. 개념 하나를 한 장에, 핵심 단어는 형광펜으로, 자주 하는 실수는 따로 짚어요.</span><span class="en">This is the kind of slide I use in class: one idea per slide, key words highlighted, and common mistakes called out.</span></p>
+          <p><span class="ko">문제 해설도 “답”보다 “왜 그 답인지”를 먼저 써요.</span><span class="en">Worked solutions explain <i>why</i> before giving the answer.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS (placeholder: shown only when 3+ consented reviews exist) -->
+  <section id="reviews" style="border-top:1px solid var(--line)" hidden>
+    <div class="wrap">
+      <p class="label"><span class="ko">후기·실적</span><span class="en">Reviews &amp; results</span></p>
+      <h2><span class="ko">학생과 학부모님의 이야기</span><span class="en">From students and parents</span></h2>
+      <div class="empty">
+        <p><span class="ko">시안 메모: 동의받은 후기·합격 실적이 3개 이상 모이면 이 자리에 보여요. 그 전에는 이 섹션을 숨겨요.</span><span class="en">Draft note: this section appears once there are 3+ consented reviews. Hidden until then.</span></p>
+        <p><span class="ko">이름은 가려요 (예: “IB 학생 K”).</span><span class="en">Names are anonymised (e.g. “IB student K”).</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTICE -->
+  <section id="notice" style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <p class="label"><span class="ko">특강·일정</span><span class="en">Special classes</span></p>
+      <h2><span class="ko">특강 소식</span><span class="en">Upcoming classes</span></h2>
+      <div class="empty">
+        <p><span class="ko">지금 모집 중인 특강이 없어요. 다음 특강 소식은 문의 시 안내해 드려요.</span><span class="en">No classes open right now. Ask us and we'll let you know about the next one.</span></p>
+        <p><a href="#contact" data-subject="특강 / Special class" style="color:var(--teal);font-weight:600"><span class="ko">특강 소식 문의 →</span><span class="en">Ask about special classes →</span></a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-grid">
+      <div class="side">
+        <p class="label"><span class="ko">문의</span><span class="en">Contact</span></p>
+        <h2><span class="ko">편하게 물어보세요</span><span class="en">Ask me anything</span></h2>
+        <p><span class="ko">자녀의 학년과 교육과정을 알려 주시면 맞는 수업을 안내해 드려요.</span><span class="en">Tell me your child's year and curriculum, and I'll suggest the right lessons.</span></p>
+        <p><span class="ko">학년·수업 형태·수업료도 상담 때 자세히 안내해 드려요.</span><span class="en">Year levels, lesson format and fees are explained during consultation.</span></p>
+      </div>
+
+      <div>
+        <form id="form" novalidate>
+          <div class="field"><label for="name"><span class="ko">학부모 성함 또는 기관명</span><span class="en">Your name or organisation</span> <span class="req">*</span></label>
+            <input id="name" name="name" autocomplete="name" required>
+            <div class="err"><span class="ko">성함을 적어 주세요</span><span class="en">Please enter your name</span></div></div>
+
+          <div class="field"><label for="contactInfo"><span class="ko">연락처 (이메일 또는 전화)</span><span class="en">Email or phone</span> <span class="req">*</span></label>
+            <input id="contactInfo" name="contact" required>
+            <div class="err"><span class="ko">연락받으실 이메일이나 전화번호를 적어 주세요</span><span class="en">Please enter an email or phone number</span></div></div>
+
+          <div class="two">
+            <div class="field"><label for="grade"><span class="ko">학생 학년</span><span class="en">Student's year / grade</span> <span class="req">*</span></label>
+              <input id="grade" name="grade" required data-ph-ko="예: Grade 10, Year 11" data-ph-en="e.g. Grade 10, Year 11">
+              <div class="err"><span class="ko">학년을 적어 주세요</span><span class="en">Please enter the year</span></div></div>
+            <div class="field"><label for="curr"><span class="ko">학교 교육과정</span><span class="en">School curriculum</span> <span class="req">*</span></label>
+              <select id="curr" name="curriculum" required>
+                <option value=""></option>
+                <option>IB</option><option>AP</option><option>A-level</option><option>IGCSE</option><option>KS3</option>
+                <option>US (General/Honors)</option><option>Ontario (OSSD)</option><option data-ko="입학시험 준비" data-en="Entrance exam prep">입학시험 준비</option><option data-ko="잘 모르겠어요 / 기타" data-en="Not sure / Other">잘 모르겠어요 / 기타</option>
+              </select>
+              <div class="err"><span class="ko">교육과정을 골라 주세요</span><span class="en">Please choose a curriculum</span></div></div>
+          </div>
+
+          <div class="field"><label for="subject"><span class="ko">관심 과목</span><span class="en">Subject</span> <span class="req">*</span></label>
+            <input id="subject" name="subject" required data-ph-ko="예: Chemistry" data-ph-en="e.g. Chemistry">
+            <div class="err"><span class="ko">관심 과목을 적어 주세요</span><span class="en">Please enter a subject</span></div></div>
+
+          <div class="field"><label for="msg"><span class="ko">문의 내용 (선택)</span><span class="en">Message (optional)</span></label>
+            <textarea id="msg" name="message"></textarea></div>
+
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <div class="field"><label class="consent"><input type="checkbox" id="agree" name="agree" value="yes" required>
+            <span><span class="ko">개인정보 수집·이용에 동의해요. (수집: 이름·연락처·학년·교육과정·문의 내용 / 목적: 수업 상담 / 보관: 상담 종료 후 1년, 요청하면 바로 삭제)</span><span class="en">I agree to the collection of my details (name, contact, year, curriculum, message) for lesson consultation. Kept for 1 year after consultation; deleted on request.</span></span></label>
+            <div class="err"><span class="ko">동의가 필요해요</span><span class="en">Please tick to agree</span></div></div>
+
+          <button class="btn" type="submit" id="send"><span class="ko">문의 보내기</span><span class="en">Send</span></button>
+          <p class="err" id="sendErr" role="alert"><span class="ko">전송이 안 됐어요. 인터넷 연결을 확인하고 잠시 후 다시 보내 주세요.</span><span class="en">Your message didn't go through. Please check your connection and try again.</span></p>
+        </form>
+
+        <div class="thanks" id="thanks" tabindex="-1">
+          <p class="hand">Thank you!</p>
+          <p><span class="ko">문의가 접수됐어요. 곧 연락드릴게요.</span><span class="en">Your message has been received. I'll be in touch soon.</span></p>
+          <p class="cta"><a class="btn ghost" href="#samples"><span class="ko">샘플 자료 더 보기</span><span class="en">See samples</span></a> <a class="btn ghost" href="#top"><span class="ko">처음으로</span><span class="en">Back to top</span></a></p>
+          <p id="demoNote" style="font-size:13px;color:var(--muted);display:none"><span class="ko">시안: 아직 구글시트 주소(FORM_URL)를 넣지 않아서 실제로 보내지는 않았어요.</span><span class="en">Draft: FORM_URL not set yet, so nothing was sent.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Sally · Science &amp; Maths</div>
+</footer>
+
+<script>
+  // language toggle
+  function setLang(l){
+    document.documentElement.lang = l;
+    document.querySelectorAll('.lang button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === l));
+    document.querySelectorAll('[data-ph-ko]').forEach(el => el.placeholder = el.dataset['ph' + (l === 'ko' ? 'Ko' : 'En')]);
+    document.querySelectorAll('option[data-ko]').forEach(o => o.textContent = o.dataset[l]);
+    try { localStorage.setItem('lang', l); } catch(e){}
+  }
+  document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+  setLang((function(){ try { return localStorage.getItem('lang'); } catch(e){ return null; } })() || 'ko');
+
+  // curriculum tabs
+  document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.tabs button').forEach(x => x.setAttribute('aria-selected', x === b));
+    document.querySelectorAll('.panel').forEach(p => p.classList.toggle('on', p.dataset.panel === b.dataset.tab));
+  }));
+
+  // "ask about this subject" → prefill form
+  document.querySelectorAll('[data-subject]').forEach(a => a.addEventListener('click', () => {
+    document.getElementById('subject').value = a.dataset.subject;
+    const tab = a.closest('.panel');
+    if (tab) {
+      const map = {ib:'IB', ap:'AP', us:'US (General/Honors)'};
+      if (map[tab.dataset.panel]) document.getElementById('curr').value = map[tab.dataset.panel];
+    }
+  }));
+
+  // ─────────────────────────────────────────────
+  // 문의 폼 → 구글시트 (Apps Script 웹 앱 주소를 아래 따옴표 안에 붙여 넣기)
+  const FORM_URL = '';
+  // ─────────────────────────────────────────────
+  const form = document.getElementById('form');
+  const sendBtn = document.getElementById('send');
+  const sendLabel = sendBtn.innerHTML;
+  function showThanks(){
+    form.style.display = 'none';
+    const t = document.getElementById('thanks');
+    t.style.display = 'block'; t.focus();
+  }
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    document.getElementById('sendErr').style.display = 'none';
+    if (form.website.value) { showThanks(); return; } // spam trap: pretend success
+    let first = null;
+    form.querySelectorAll('.field').forEach(f => {
+      const el = f.querySelector('input:not(.hp),select,textarea');
+      const bad = el.required && (el.type === 'checkbox' ? !el.checked : !el.value.trim());
+      f.classList.toggle('bad', bad);
+      if (bad && !first) first = el;
+    });
+    if (first) { first.focus(); return; }
+    sendBtn.disabled = true;
+    sendBtn.innerHTML = document.documentElement.lang === 'ko' ? '보내는 중…' : 'Sending…';
+
+    if (!FORM_URL) { // not connected yet: demo only
+      document.getElementById('demoNote').style.display = 'block';
+      setTimeout(showThanks, 500);
+      return;
+    }
+    const data = new URLSearchParams(new FormData(form));
+    data.set('lang', document.documentElement.lang);
+    // Apps Script doesn't send CORS headers, so the reply can't be read; a network error is the only failure we can see.
+    fetch(FORM_URL, { method: 'POST', mode: 'no-cors', body: data })
+      .then(showThanks)
+      .catch(() => {
+        sendBtn.disabled = false;
+        sendBtn.innerHTML = sendLabel;
+        document.getElementById('sendErr').style.display = 'block';
+      });
+  });
+</script>
+</body>
+</html>
